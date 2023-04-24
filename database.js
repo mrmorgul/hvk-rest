@@ -17,8 +17,8 @@ async function run() {
 
     const insert = async (request,callback) => {
         const insertDate = new Date().toISOString();
-        const requests = database.collection('requests');
-        const result = await requests.insertOne({request, requestDate: insertDate, lastUpdated: insertDate});
+        //const requests = database.collection('requests');
+        const result = await database.insertOne({request, requestDate: insertDate, lastUpdated: insertDate});
         callback(null, result);
     }
 
