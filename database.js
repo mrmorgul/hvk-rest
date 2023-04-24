@@ -1,26 +1,38 @@
 const { MongoClient } = require('mongodb');
 
 //const uri = process.env.MONGO_URI;
-const uri = 'mongodb://root:example@0.0.0.0:27017/admin';
-const client = new MongoClient(uri, {serverApi: {version: '1', strict: true, deprecationErrors: true}});
+const uri = 'mongodb+srv://root:example@0.0.0.0:27017/admin';
+const client = new MongoClient(uri);
+    //{serverApi: {version: '1', strict: true, deprecationErrors: true}});
 
 //let database;
 
 async function run() {
   try {
     await client.connect();
+
+    await listDatabases(client);
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!")
+    //await client.db("admin").command({ ping: 1 });
+    //console.log("Pinged your deployment. You successfully connected to MongoDB!")
     //database = client.db('test');
-    }
-    finally {
+    } catch(e) {
+        console.error(e);
+    } finally {
         // Ensures that the client will close when you finish/error
-        //await client.close();
+        await client.close();
       }
     }
-    run().catch(console.dir);
-    
+
+run().catch(console.error);
+ 
+async function listDatabases(client) {
+    databasesList = await client.db().admin().listDatabases();
+
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
+
     const insert = async (request,callback) => {
         const insertDate = new Date().toISOString();
         const myDB = client.db('test')
