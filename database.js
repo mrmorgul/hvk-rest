@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 //const uri = process.env.MONGO_URI;
-const uri = 'mongodb://root:example@localhost:27017/test';
+const uri = 'mongodb://root:example@localhost:27017';
 const client = new MongoClient(uri, {
     serverApi: {
         version: '1',
@@ -22,7 +22,7 @@ async function run() {
     }
     finally {
         // Ensures that the client will close when you finish/error
-        await client.close();
+        //await client.close();
       }
     }
     run().catch(console.dir);
