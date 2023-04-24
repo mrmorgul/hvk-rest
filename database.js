@@ -1,13 +1,9 @@
 const { MongoClient } = require('mongodb');
 
 //const uri = process.env.MONGO_URI;
-const uri = 'mongodb://root:example@0.0.0.0:27017';
+const uri = 'mongodb://root:example@127.0.0.1:27017';
 const client = new MongoClient(uri, {
-    serverApi: {
-        version: '1',
-        strict: true,
-        deprecationErrors: true,
-    }
+    serverApi: {version: '1', strict: true, deprecationErrors: true}
 });
 
 //let database;
