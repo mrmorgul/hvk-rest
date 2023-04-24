@@ -3,11 +3,16 @@ const { MongoClient } = require('mongodb');
 //const uri = process.env.MONGO_URI;
 const url = 'mongodb://root:example@localhost:27017/test';
 const client = new MongoClient(url);
+let database;
 
 async function run() {
-  //try {
+  try {
     await client.connect();
-    const database = client.db('test');
+    database = client.db('test');
+    }
+    catch (err) {
+        console.error(err);
+      }
     }
 
     const insert = async (request,callback) => {
