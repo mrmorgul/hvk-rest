@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://root:example@localhost:27017/test';
 const client = new MongoClient(uri, {
     serverApi: {
-        version: 'ServerApiVersion.v1',
+        version: 1,
         strict: true,
         deprecationErrors: true,
     }
