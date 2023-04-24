@@ -23,7 +23,7 @@ app.post('/test', async (req, res) => {
   }
 });
 
-app.post('/test', async (req, res) => {
+app.get('/test', async (req, res) => {
   try {
     await db.insert({ name: 'John Doe', age: 30 });
     res.send();
