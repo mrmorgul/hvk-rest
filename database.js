@@ -8,6 +8,7 @@ async function run() {
   //try {
     await client.connect();
     const database = client.db(process.env.MONGO_DATABASE);
+    }
 
     const insert = async (requestGuid,callback) => {
         const insertDate = new Date().toISOString();
@@ -39,7 +40,7 @@ async function run() {
         const result = await requests.find({requestStatus: requestedStatus}).toArray();
         callback(null, result);
     }
-}
+
 
 module.exports = {
     insert,
