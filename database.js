@@ -7,19 +7,19 @@ const client = new MongoClient(url);
 async function run() {
   //try {
     await client.connect();
-    const database = client.db(process.env.MONGO_DATABASE);
+    const database = client.db('test');
     }
 
-    const insert = async (requestGuid,callback) => {
+    const insert = async (request,callback) => {
         const insertDate = new Date().toISOString();
         const requests = database.collection('requests');
-        const result = await requests.insertOne({requestGuid, requestDate: insertDate, lastUpdated: insertDate});
+        const result = await requests.insertOne({request, requestDate: insertDate, lastUpdated: insertDate});
         callback(null, result);
     }
 
-    const deleteResult = async (guid, callback) => {
+    const deleteResult = async (request, callback) => {
         const requests = database.collection('requests');
-        const result = await requests.deleteOne({requestGuid: guid});
+        const result = await requests.deleteOne(request);
         callback(null, result);
     }
 
