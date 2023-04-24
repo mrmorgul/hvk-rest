@@ -18,3 +18,7 @@ app.post('/test', async(req, res) => {
   res.send()
   }
 )
+
+app.get('/g', (req, res) => {
+  res.send('g-Hello World!')
+})
