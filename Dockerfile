@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installer afhængigheder
+RUN npm install mongodb
 RUN npm install
 
 # Kopier resten af applikationskoden til arbejdsområdet
