@@ -29,19 +29,19 @@ app.get('/insert', async (req, res) => {
   })
 
 
-app.get('/getname', (req, res) => {
-  try {
-    return db.get('John Doe');
-    res.send();
-  } catch (err)  {
-      res.status(400).send({
-      status: 400,
-      message: 'unsuccessfully fetched record.'
-      })
-    } finally {
+  app.get('/getname', async (req, res) => {
+    try {
+      const name = await db.getname('John Doe');
       res.status(200).send({
         status: 200,
-        message: 'Successfully fetched record.' + res
-        })
+        message: 'Successfully fetched record.' + name,
+        data: name
+      });
+    } catch (err)  {
+      res.status(400).send({
+        status: 400,
+        message: 'Failed to fetch record.'
+      });
     }
-  })
+  });
+  
