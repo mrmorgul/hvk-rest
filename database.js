@@ -1,21 +1,22 @@
 const { MongoClient } = require('mongodb');
 
 //const uri = process.env.MONGO_URI;
-//const uri = 'mongodb+srv://root:example@0.0.0.0:27017/admin';
-const uri = 'mongodb://root:example@0.0.0.0:27017/admin';
-const client = new MongoClient(uri);
+//const uri = 'mongodb+srv://root:example@0.0.0.0/admin';
+
     //{serverApi: {version: '1', strict: true, deprecationErrors: true}});
 
 //let database;
 
 async function run() {
+    const uri = 'mongodb://root:example@0.0.0.0:27017/admin';
+    const client = new MongoClient(uri);
   try {
     await client.connect();
 
     await listDatabases(client);
     // Send a ping to confirm a successful connection
-    //await client.db("admin").command({ ping: 1 });
-    //console.log("Pinged your deployment. You successfully connected to MongoDB!")
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!")
     //database = client.db('test');
     } catch(e) {
         console.error(e);
