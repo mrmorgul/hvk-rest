@@ -35,7 +35,7 @@ app.get('/insert', async (req, res) => {
       res.status(200).send({
         status: 200,
         message: 'Successfully fetched record.' + name,
-        data: name
+        //data: name
       });
     } catch (err)  {
       res.status(400).send({
