@@ -26,11 +26,15 @@ app.post('/test', async (req, res) => {
 app.get('/insert', async (req, res) => { 
   //await db.insert({ name: 'John Doe', age: 32 };
   //await = db.insert({ name: 'John Doe', age: 32 });
-  return db.insert({ name: 'John Doe', age: 32 });
-  //res.status(200).send({
-  //  status: 200,
-  //  message: 'Successfully created record.'
-  //  })
+  try {
+    return db.insert({ name: 'John Doe', age: 32 });
+    //res send();
+  } catch (err)  {
+      res.status(200).send({
+      status: 200,
+      message: 'Successfully created record.'
+      })
+    }
   })
 
 

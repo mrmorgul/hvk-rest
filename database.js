@@ -39,7 +39,7 @@ async function listDatabases(client) {
         //const insertDate = new Date().toISOString();
         const myDB = client.db('test')
         const myColl = myDB.collection('testcoll');
-        const result = await myColl.insertOne(request);
+        const result = myColl.insertOne(request);
         console.log('record added: ${result.insertedId}')
         return result;
     }
