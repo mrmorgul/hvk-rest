@@ -39,7 +39,15 @@ async function listDatabases(client) {
         const myDB = client.db('test');
         const myColl = myDB.collection('testcoll');
         const result = await myColl.insertOne(data);
-        console.log(`record added: ${result.insertedId}`);
+        console.log(`record added - db.js: ${result.insertedId}`);
+        return await result;
+    }
+
+    const getname = async (data) => {
+        const myDB = client.db('test');
+        const myColl = myDB.collection('testcoll');
+        const result = await myColl.findOne({name: $(data)});
+        console.log(`record fetched - db.js: ${result.insertedId}`);
         return await result;
     }
 
@@ -70,6 +78,7 @@ async function listDatabases(client) {
 
 module.exports = {
     insert,
+    getname,
     lookupStatus,
     deleteResult,
     updateStatus,
