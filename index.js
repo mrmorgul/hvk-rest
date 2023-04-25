@@ -23,13 +23,14 @@ app.post('/test', async (req, res) => {
   }
 });
 
-app.get('/test', async (req, res) => { 
+app.get('/insert', async (req, res) => { 
   //await db.insert({ name: 'John Doe', age: 32 };
-  const response = db.insert({ name: 'John Doe', age: 32 };
-  return res.status(200).send({
-    status: 200,
-    message: 'Successfully created: ' + response
-    })
+  //await = db.insert({ name: 'John Doe', age: 32 });
+  return db.insert({ name: 'John Doe', age: 32 });
+  //res.status(200).send({
+  //  status: 200,
+  //  message: 'Successfully created record.'
+  //  })
   })
 
 
