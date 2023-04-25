@@ -1,15 +1,10 @@
 const { MongoClient } = require('mongodb');
 
-//const uri = process.env.MONGO_URI;
-//const uri = 'mongodb+srv://root:example@0.0.0.0/admin';
-
-    //{serverApi: {version: '1', strict: true, deprecationErrors: true}});
-
-//let database;
+const uri = 'mongodb://root:example@0.0.0.0:27017/admin';
+const client = new MongoClient(uri);
 
 async function run() {
-    const uri = 'mongodb://root:example@0.0.0.0:27017/admin';
-    const client = new MongoClient(uri);
+
   try {
     await client.connect();
 
