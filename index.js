@@ -34,8 +34,8 @@ app.get('/insert', async (req, res) => {
       const name = await db.getname('John Doe');
       res.status(200).send({
         status: 200,
-        message: 'Successfully fetched record.' + name,
-        //data: name
+        message: 'Successfully fetched record.',
+        data: name
       });
     } catch (err)  {
       res.status(400).send({
