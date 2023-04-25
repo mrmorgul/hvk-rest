@@ -46,7 +46,7 @@ async function listDatabases(client) {
     const getname = async (data) => {
         const myDB = client.db('test');
         const myColl = myDB.collection('testcoll');
-        const result = await myColl.findOne({name: $(data)});
+        const result = await myColl.findOne({name: data});
         console.log(`record fetched - db.js: ${result.insertedId}`);
         return await result;
     }
