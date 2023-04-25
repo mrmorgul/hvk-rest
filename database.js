@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 
-const uri = 'mongodb://root:admin@0.0.0.0:27017/admin?tls=false';
+const uri = 'mongodb://root:admin@127.0.0.1:27017/admin?tls=false';
 //const uri = 'mongodb://127.0.0.1:27017';
 const client = new MongoClient(uri);
 
