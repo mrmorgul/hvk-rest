@@ -24,14 +24,15 @@ app.post('/test', async (req, res) => {
 });
 
 app.get('/test', async (req, res) => {
-  try {
-    await db.insert({ name: 'John Doe', age: 30 });
-    res.send();
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-});
+    await db.insert({ name: 'John Doe', age: 30 }, function(err, result){
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log(result);
+    });
+  });
+
 
 app.get('/g', (req, res) => {
   res.send('g-Hello World!')
