@@ -29,9 +29,10 @@ app.get('/insert', async (req, res) => {
   })
 
 
-  app.get('/getname', async (req, res) => {
+  app.get('/getname/:namein', async (req, res) => {
     try {
-      const name = await db.getname('John Doe');
+      let namein = req.params.namein;
+      const name = await db.getname(namein);
       res.status(200).send({
         status: 200,
         message: 'Successfully fetched record.',
