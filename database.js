@@ -35,13 +35,13 @@ async function listDatabases(client) {
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-    const insert = async (request,callback) => {
-        const insertDate = new Date().toISOString();
+    const insert = async (request) => {
+        //const insertDate = new Date().toISOString();
         const myDB = client.db('test')
         const myColl = myDB.collection('testcoll');
         const result = await myColl.insertOne(request);
         console.log('record added: ${result.insertedId}')
-        callback(null, result);
+        return result;
     }
 
     const deleteResult = async (request, callback) => {

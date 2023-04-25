@@ -23,16 +23,14 @@ app.post('/test', async (req, res) => {
   }
 });
 
-app.get('/test', async (req, res) => {
-    await db.insert({ name: 'John Doe', age: 30 }, function(err, result){
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log(result);
-    });
-    res.status(200).send(result);
-  });
+app.get('/test', async (req, res) => { 
+  //await db.insert({ name: 'John Doe', age: 32 };
+  const response = db.insert({ name: 'John Doe', age: 32 };
+  return res.status(200).send({
+    status: 200,
+    message: 'Successfully created: ' + response
+    })
+  })
 
 
 app.get('/g', (req, res) => {
