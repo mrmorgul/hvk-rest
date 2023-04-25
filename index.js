@@ -30,10 +30,15 @@ app.get('/insert', async (req, res) => {
     return db.insert({ name: 'John Doe', age: 32 });
     //res send();
   } catch (err)  {
-      res.status(200).send({
-      status: 200,
-      message: 'Successfully created record.'
+      res.status(400).send({
+      status: 400,
+      message: 'unsuccessfully created record.'
       })
+    } finally {
+      res.status(200).send({
+        status: 200,
+        message: 'Successfully created record.'
+        })
     }
   })
 
